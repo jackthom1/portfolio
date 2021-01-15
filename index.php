@@ -48,33 +48,18 @@ include("./attributes/header.php"); ?>
 
 <section class="projects projects__section" id="projects">
     <h2 class="subtitle projects__title">My Projects</h2>
-    <!-- <div class="projects__container">
-        <div class="projects__container__text">
-            <h2 class="subtitle projects__subtitle">Artist Detox</h2>
-            <p class="projects__info">Website design and development for a music podcast</p>
-        </div>
+
+    <div class="projects__container">
+        <h2 class="subtitle projects__subtitle">Artist Detox</h2>
         <img src="./images/artistDetox.png" alt="Laptop showing project website" class="image projects__image" loading="lazy">
     </div>
     <div class="projects__container">
-        <div class="projects__container__text">
-            <h2 class="subtitle projects__subtitle">Sound Communities</h2>
-            <p class="projects__info">Website re-design for a youth music & radio company</p>
-        </div>
+        <h2 class="subtitle projects__subtitle projects__subtitle--sml">Sound Communities</h2>
         <img src="./images/soundCommunities.png" alt="Computer showing project website" class="image projects__image" loading="lazy">
     </div>
     <div class="projects__container">
-        <div class="projects__container__text">
-            <h2 class="subtitle projects__subtitle">Ocean Youth</h2>
-            <p class="projects__info">Website re-design for a local youth radio station</p>
-        </div>
-        <img src="./images/oceanYouth.png" alt="Computer showing project website" class="image projects__image" loading="lazy">
-    </div> -->
-    <!-- <img src="./images/soundCommunities.png" alt="Computer showing project website" class="image projects__image" loading="lazy">
-    <img src="./images/oceanYouth.png" alt="Computer showing project website" class="image projects__image" loading="lazy"> -->
-    
-    <div class="projects__container">
-        <h2 class="subtitle projects__subtitle">Artist Detox</h2>
-        <img src="./images/artistDetox.png" alt="Computer showing project website" class="image projects__image" loading="lazy">
+        <h2 class="subtitle projects__subtitle">Ocean Youth</h2>
+        <img src="./images/oceanYouth.png" alt="Phone showing project website" class="image projects__image" loading="lazy">
     </div>
 </section>
 </body>

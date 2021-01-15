@@ -25,7 +25,7 @@ function style(){
 function watchPHP(){
     browserSync.init({
         proxy:{
-            target: "localhost:8888"
+            target: "localhost"
         }
     });
     gulp.watch("./scss/**/*.scss", gulp.series(style, prefixer))

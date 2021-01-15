@@ -9,10 +9,14 @@
   src: url("./cour.ttf");
 }
 :root {
-  --clr-bg: #edeae4;
   --clr-primary: #f87666;
   --clr-text: #312f2f;
   --clr-white: #ffffff;
+  --clr-bg: #edeae4;
+  --clr-alt-bg: #dac4f7;
+  // --clr-primary: #f87666;
+  // --clr-text: #312f2f;
+  // --clr-white: #ffffff;
 
   --primary-font: athene, sans-serif;
   --second-font: courierNew;
@@ -165,7 +169,7 @@ h3 {
     font-size: 1.2rem;
   }
   &__image {
-    width: 60%;
+    width: Min(60%, 25rem);
     align-self: flex-end;
     margin-right: 1.5rem;
   }
@@ -185,42 +189,43 @@ h3 {
 
 // PROJECTS \\
 
-// .projects {
-//   width: 100%;
-//   padding: 0 1rem;
-//   &__title {
-//     margin-bottom: 1rem;
-//   }
-//   &__container {
-//     background: var(--clr-white);
-//     padding: 0.5rem;
-//     border-radius: 1rem;
-//     transition: box-shadow 0.2s ease-out;
-//     text-align: center;
-//     &:hover {
-//       box-shadow: 0.5px 0.5px 5px var(--clr-text);
-//     }
-//     & + * {
-//       margin-top: 2rem;
-//     }
-//   }
-// }
-
 .projects {
   width: 100%;
   height: auto;
-  background: orange;
+  position: relative;
+  background: var(--clr-alt-bg);
+  overflow-x: hidden;
   &__container {
     margin-top: 1rem;
+    height: 15rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &:hover > .projects__image {
+      filter: blur(0rem);
+    }
+    &:hover > .projects__subtitle {
+      filter: blur(0.3rem);
+      z-index: 0;
+    }
   }
   &__image {
-    background: red;
+    filter: blur(0.3rem);
+    transition: filter 0.2s ease-out;
+    height: 100%;
   }
   &__subtitle {
     position: absolute;
-    top: 20%;
+    top: 15%;
+    left: 4rem;
     font-size: 4rem;
     width: 5ch;
+    text-indent: -3rem;
+    z-index: 1;
+    transition: filter 0.2s ease-out;
+    &--sml {
+      font-size: 3.2rem;
+    }
   }
 }
