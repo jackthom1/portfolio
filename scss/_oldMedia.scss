@@ -1,0 +1,338 @@
+// MEDIA QRY \\
+
+// 425PX
+
+@media (min-width: 425px) {
+  li {
+    font-size: 2rem;
+  }
+  .hero {
+    padding: 0 2rem;
+  }
+  .nav__links::after {
+    width: 11rem;
+  }
+  .about {
+    &__image {
+      width: 60%;
+    }
+    &__nav {
+      top: 75%;
+    }
+  }
+}
+
+//550PX
+
+@media (min-width: 550px) {
+  .hero {
+    padding: 0 3rem;
+  }
+  .about {
+    &__image {
+      margin-right: 4rem;
+      width: 40%;
+    }
+    &__info {
+      padding: 0 1rem;
+    }
+    &__nav {
+      top: 65%;
+    }
+  }
+}
+
+//700PX
+
+@media (min-width: 700px) {
+  li {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    &--light {
+      display: block;
+    }
+  }
+  .background__box {
+    width: 60%;
+    height: 80%;
+    left: 20%;
+  }
+  .hero {
+    &__title {
+      transform: none;
+      left: 10%;
+    }
+    &__titleContainer {
+      position: relative;
+      top: 90%;
+      left: 12%;
+      transform: rotate(-90deg);
+      transform-origin: left top;
+    }
+    &__subtitle {
+      position: relative;
+      white-space: nowrap;
+      max-width: fit-content;
+    }
+    &__nav {
+      left: 50%;
+    }
+  }
+  .about {
+    &__background {
+      width: 80%;
+      height: auto;
+      left: 10%;
+    }
+    &__title {
+      top: 75%;
+    }
+    &__nav {
+      top: 75%;
+    }
+  }
+}
+
+//800PX
+
+@media (min-width: 800px) {
+  .title {
+    font-size: 5.8rem;
+  }
+  .about {
+    &__background {
+      background: var(--clr-white);
+      height: 80%;
+      top: 10%;
+      padding-top: 0.5rem;
+    }
+    &__title {
+      top: 85%;
+    }
+    &__image {
+      width: 30%;
+      position: absolute;
+      top: 32%;
+      //padding: 0;
+    }
+  }
+}
+
+//1024PX
+
+@media (min-width: 1024px) {
+  li {
+    font-size: 2.5rem;
+  }
+  .title {
+    font-size: 7rem;
+  }
+  .background__box {
+    width: 50%;
+  }
+  .nav {
+    &__links {
+      & + * {
+        margin-top: 1rem;
+      }
+      &::after {
+        width: 13rem;
+      }
+    }
+  }
+  .hero {
+    &__title {
+      left: 15%;
+      span {
+        display: block;
+        margin-left: 13rem;
+      }
+    }
+    &__titleContainer {
+      left: 14%;
+    }
+  }
+  .about {
+    &__background {
+      left: 30%;
+      padding-top: 0.5rem;
+    }
+    &__image {
+      width: 20%;
+      top: 35%;
+    }
+    &__title {
+      left: 15%;
+      font-size: 5rem;
+    }
+    &__nav {
+      top: 70%;
+    }
+  }
+}
+
+//1250PX
+
+@media (min-width: 1250px) {
+  .title {
+    font-size: 8.5rem;
+    line-height: 10rem;
+  }
+  .background__box {
+    width: 40%;
+  }
+  .hero {
+    &__title {
+      left: 16%;
+      span {
+        margin-left: 12rem;
+      }
+    }
+    &__titleContainer {
+      left: 16%;
+    }
+    &__nav {
+      top: 80%;
+    }
+  }
+  .about {
+    &__title {
+      font-size: 5.5rem;
+    }
+    &__nav {
+      left: 50%;
+    }
+    &__image {
+      top: 30%;
+      left: 70%;
+    }
+    &__background {
+      padding-top: 5rem;
+    }
+  }
+}
+
+//1440PX
+
+@media (min-width: 1440px) {
+  .title {
+    font-size: 10rem;
+    line-height: 11rem;
+    transform-origin: bottom center;
+    overflow: hidden;
+  }
+  .background__box {
+    width: 35%;
+    left: 30%;
+  }
+  .hero {
+    &__title {
+      left: 25%;
+      span {
+        margin-left: 14rem;
+      }
+    }
+
+    &__titleContainer {
+      left: 28%;
+    }
+    &__nav {
+      left: 60%;
+    }
+  }
+  .about {
+    &__title {
+      font-size: 6rem;
+      left: 20%;
+      top: 80%;
+      transform-origin: left top;
+    }
+    &__image {
+      left: 70%;
+      top: 40%;
+      width: 10%;
+    }
+    &__background {
+      left: 40%;
+    }
+    &__nav {
+      left: 55%;
+    }
+  }
+}
+
+// media qry for HEIGHT
+
+//700PX
+
+@media (max-height: 700px) {
+  h3 {
+    font-size: 1.2rem;
+  }
+}
+
+//800px
+@media (max-height: 800px) {
+  .about {
+    padding: 0.5rem 1rem;
+  }
+
+  //700px width
+  @media (min-width: 700px) {
+    .hero {
+      &__titleContainer {
+        left: 15%;
+      }
+    }
+  }
+  //1224px width
+  @media (min-width: 1024px) {
+    li {
+      font-size: 2rem;
+    }
+    .title {
+      font-size: 7rem;
+    }
+    .hero {
+      &__titleContainer {
+        left: 15%;
+      }
+    }
+  }
+  //1250px width
+  @media (min-width: 1250px) {
+    .title {
+      font-size: 9rem;
+    }
+    .about {
+      &__title {
+        font-size: 5rem;
+      }
+    }
+  }
+  //1440px width
+  @media (min-width: 1440px) {
+    .hero {
+      &__titleContainer {
+        left: 28%;
+      }
+    }
+  }
+}
+
+//900px MIN
+
+@media (min-height: 900px) {
+  h3 {
+    font-size: 1.7rem;
+  }
+}
+
+//1000px MIN
+
+@media (min-height: 1000px) {
+  h3 {
+    font-size: 2rem;
+  }
+}
