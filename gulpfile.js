@@ -34,7 +34,7 @@ function compile(){
     .pipe(babel({
         presets: ["@babel/preset-env"]
       }))
-      .pipe(concat('index.js'))
+    //   .pipe(concat('index.js'))
       .pipe(gulp.dest('./dist/js'));
     let compileTwo = browserify('./dist/js/index.js')
     .bundle()
@@ -52,7 +52,7 @@ function watchPHP(){
         }
     });
     gulp.watch("./src/css/**/*.scss", style);
-    gulp.watch("./src/images/*", images)
+    // gulp.watch("./src/images/**/*", images)
     gulp.watch("./**/*.php").on("change", browserSync.reload);
     gulp.watch("./src/js/**/*.js", compile).on("change", browserSync.reload);
 }
@@ -64,7 +64,7 @@ function watchHTML(){
         }
     });
     gulp.watch("./src/css/**/*.scss", style)
-    gulp.watch("./src/images/*", images)
+    // gulp.watch("./src/images/**/*", images)
     gulp.watch("./**/*.html").on("change", browserSync.reload);
     gulp.watch("./src/js/**/*.js", compile).on("change", browserSync.reload);
 }
@@ -80,6 +80,7 @@ function gulpExport(){
     .pipe(require('minify-stream')({ sourceMap: false }))
 }
 
+exports.images = images;
 exports.gulpExport = gulpExport;
 exports.watchPHP = watchPHP;
 exports.watchHTML = watchHTML;

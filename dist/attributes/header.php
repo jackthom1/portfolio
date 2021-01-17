@@ -12,10 +12,13 @@
             echo "";
         } ?>
     </title>
-
-
     
-
+    
 </head>
 
-<body>
+<body data-barba="wrapper">
+
+    <div class="newPageLoad">
+        <div class="loadingCover"></div>
+       
+    </div>

@@ -24,6 +24,8 @@
     "gulp-concat": "^2.6.1"
   },
   "dependencies": {
+    "@barba/core": "^2.9.7",
+    "gsap": "^3.6.0",
     "locomotive-scroll": "^4.0.6"
   }
 }

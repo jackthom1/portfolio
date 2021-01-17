@@ -30,6 +30,7 @@
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 body {
   background: var(--clr-bg);
@@ -155,6 +156,8 @@ h3 {
   display: flex;
   flex-direction: column;
   position: relative;
+  background: linear-gradient(180deg, var(--clr-bg) 0%, var(--clr-alt-bg) 100%);
+
   & * + * {
     margin-top: 0.8rem;
   }
@@ -173,6 +176,7 @@ h3 {
     width: Min(60%, 25rem);
     align-self: flex-end;
     margin-right: 1.5rem;
+    margin-top: 1.5rem;
   }
   &__background {
     position: relative;
@@ -182,10 +186,6 @@ h3 {
     height: auto;
     background: none;
   }
-  &__nav {
-    left: 40%;
-    top: 80%;
-  }
 }
 
 // PROJECTS \\
@@ -194,8 +194,10 @@ h3 {
   width: 100%;
   height: auto;
   position: relative;
-  background: linear-gradient(180deg, var(--clr-bg) 0%, var(--clr-alt-bg) 100%);
   overflow-x: hidden;
+  a {
+    text-decoration: none;
+  }
   &__container {
     margin-top: 1rem;
     height: 15rem;
@@ -203,116 +205,154 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    overflow: hidden;
     &:hover > .projects__image {
       filter: blur(0rem);
     }
     &:hover > .projects__subtitle {
-      filter: blur(0.3rem);
+      filter: blur(0.2rem);
       z-index: 0;
     }
   }
   &__image {
-    filter: blur(0.3rem);
+    filter: blur(0.2rem);
     transition: filter 0.2s ease-out;
     height: 100%;
+    position: absolute;
   }
   &__subtitle {
-    position: absolute;
-    top: 15%;
-    left: 4rem;
+    position: relative;
     font-size: 4rem;
     width: 5ch;
     text-indent: -3rem;
     z-index: 1;
     transition: filter 0.2s ease-out;
     &--sml {
+      left: -10%;
       font-size: 2.5rem;
     }
   }
 }
 
-// LOCOMOTIVE SCROLL \\
-
-/*! locomotive-scroll v4.0.6 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
-html.has-scroll-smooth {
-  overflow: hidden;
+.portfolio {
+  &__hero {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    overflow-x: hidden;
+    &::after {
+      content: "";
+      background: url("../images/artistDetox/artistdetox.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 80%;
+      height: 30rem;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -25%;
+    }
+    &::before {
+      content: "";
+      background: url("../images/artistDetox/artistDetoxPhoneAlt.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 15rem;
+      height: 60%;
+      display: block;
+      position: absolute;
+      top: 20%;
+      left: -5rem;
+    }
+    &--sc {
+      &::before {
+        background: url("../images/soundCommunities/soundCommunitiesPhone.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      &::after {
+        background: url("../images/soundCommunities/soundCommunitiesLaptop.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+    &--oy {
+      &::before {
+        background: url("../images/oceanYouth/oceanYouthPhone.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      &::after {
+        background: url("../images/oceanYouth/oceanYouthLaptop.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+  &__title {
+    transform: rotate(270deg);
+    transform-origin: left top;
+    position: absolute;
+    top: 24.5rem;
+    right: -5rem;
+    white-space: nowrap;
+    font-size: 4rem;
+    z-index: 1;
+    &--sc {
+      font-size: 2.2rem;
+      top: 23.5rem;
+      right: -5.2rem;
+    }
+    &--oy {
+      font-size: 3.5rem;
+      top: 23.5rem;
+      right: -4.8rem;
+    }
+  }
+  &__info {
+    position: absolute;
+    top: 62%;
+    left: 7rem;
+    font-size: 1.2rem;
+  }
+  &__content {
+    background: linear-gradient(
+      180deg,
+      var(--clr-bg) 40%,
+      var(--clr-alt-bg) 100%
+    );
+    position: relative;
+    height: 150vh;
+    overflow: hidden;
+  }
+  &__image {
+    position: absolute;
+    &--laptop {
+      width: 150%;
+      left: -10rem;
+    }
+    &--phone {
+      width: 100%;
+      top: 16.5rem;
+      right: -6rem;
+    }
+    &--computer {
+      width: 120%;
+      top: 49rem;
+      left: -5rem;
+    }
+  }
 }
 
-html.has-scroll-dragging {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.has-scroll-smooth body {
-  overflow: hidden;
-}
-
-.has-scroll-smooth [data-scroll-container] {
-  min-height: 100vh;
-}
-
-[data-scroll-direction="horizontal"] [data-scroll-container] {
-  white-space: nowrap;
-  height: 100vh;
-  display: inline-block;
-  white-space: nowrap;
-}
-
-[data-scroll-direction="horizontal"] [data-scroll-section] {
-  display: inline-block;
-  vertical-align: top;
-  white-space: nowrap;
-  height: 100%;
-}
-
-.c-scrollbar {
-  position: absolute;
-  right: 0;
+.loadingCover {
+  position: fixed;
   top: 0;
-  width: 11px;
-  height: 100%;
-  transform-origin: center right;
-  transition: transform 0.3s, opacity 0.3s;
-  opacity: 0;
-}
-.c-scrollbar:hover {
-  transform: scaleX(1.45);
-}
-.c-scrollbar:hover,
-.has-scroll-scrolling .c-scrollbar,
-.has-scroll-dragging .c-scrollbar {
-  opacity: 1;
-}
-[data-scroll-direction="horizontal"] .c-scrollbar {
+  left: 0;
+  transform: translateX(-100%);
   width: 100%;
-  height: 10px;
-  top: auto;
-  bottom: 0;
-  transform: scaleY(1);
-}
-[data-scroll-direction="horizontal"] .c-scrollbar:hover {
-  transform: scaleY(1.3);
-}
-
-.c-scrollbar_thumb {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: black;
-  opacity: 0.5;
-  width: 7px;
-  border-radius: 10px;
-  margin: 2px;
-  cursor: -webkit-grab;
-  cursor: grab;
-}
-.has-scroll-dragging .c-scrollbar_thumb {
-  cursor: -webkit-grabbing;
-  cursor: grabbing;
-}
-[data-scroll-direction="horizontal"] .c-scrollbar_thumb {
-  right: auto;
-  bottom: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--clr-alt-bg);
+  z-index: 100;
 }
