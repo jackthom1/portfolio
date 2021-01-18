@@ -39,13 +39,15 @@ include("./dist/attributes/header.php"); ?>
         <a href="./ocean-youth.php">
             <div class="projects__container projects__container--even">
                 <h2 class="subtitle projects__subtitle">Ocean Youth</h2>
-                <img src="./dist/images/oceanYouth.png" alt="Phone showing project website" class="image projects__image" loading="lazy">
+                <img src="./dist/images/oceanYouth/oceanYouthIphone.png" alt="Phone showing project website" class="image projects__image" loading="lazy">
             </div>
         </a>
-        <div class="projects__container projects__container--odd">
-            <h2 class="subtitle projects__subtitle">1-Zero-1</h2>
-            <img src="./dist/images/1-zero-1.png" alt="Laptop showing project website" class="image projects__image" loading="lazy">
-        </div>
+        <a href="./1-zero-1.php">
+            <div class="projects__container projects__container--odd">
+                <h2 class="subtitle projects__subtitle">1-Zero-1</h2>
+                <img src="./dist/images/1-zero-1/1-zero-1Mac.png" alt="Laptop showing project website" class="image projects__image" loading="lazy">
+            </div>
+        </a>
     </section>
 
     <section class="about about__section" id="about">
