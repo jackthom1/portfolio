@@ -50,19 +50,16 @@ function compileHTML(){
     .pipe(gulp.dest('./dist'))
 }
 
-
-
 function watchHTML(){
     browserSync.init({
         server:{
             baseDir: "./dist"
         }
     });
-    gulp.watch("./src/css/**/*.scss", style)
+    gulp.watch("./src/css/**/*.scss", style);
     gulp.watch("./src/html/**/*.html", compileHTML).on("change", browserSync.reload);
     gulp.watch("./src/js/**/*.js", compileJS).on("change", browserSync.reload);
 }
-
 
 function finalCompile(){
     let compile = browserify('./dist/js/index.js')

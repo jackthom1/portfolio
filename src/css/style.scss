@@ -92,6 +92,13 @@ h3 {
   }
 }
 
+.hidden {
+  display: none;
+}
+.shown {
+  display: block;
+}
+
 // NAV \\
 .nav {
   width: 250px;
@@ -186,18 +193,13 @@ h3 {
     font-size: 1.2rem;
   }
   &__image {
-    width: Min(60%, 25rem);
-    align-self: flex-end;
-    margin-right: 1.5rem;
-    margin-top: 1.5rem;
+    width: auto;
+    height: 15%;
+    border-radius: 50%;
   }
   &__background {
-    position: relative;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: auto;
-    background: none;
+    padding: 1rem;
+    padding: clamp(10px, 2vw, 1rem);
   }
 }
 
@@ -284,6 +286,10 @@ h3 {
     grid-column: 7/13;
     grid-row: 1/2;
     text-align: center;
+    &--sml {
+      font-size: 2rem;
+      padding: 2rem 0 1.5rem 0;
+    }
   }
   &__info {
     grid-column: 6/-1;
@@ -519,7 +525,7 @@ h3 {
       .portfolio__image {
         width: 80%;
         &--two {
-          width: 38%;
+          width: auto;
         }
         &--two--sml {
           width: 45%;
