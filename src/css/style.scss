@@ -79,6 +79,19 @@ h3 {
   transform-origin: bottom center;
 }
 
+.backButton {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  color: var(--clr-primary);
+  transition: color 0.2s ease-out;
+  &:hover,
+  &:focus {
+    color: var(--clr-text);
+  }
+}
+
 // NAV \\
 .nav {
   width: 250px;
@@ -217,7 +230,7 @@ h3 {
   }
   &__image {
     filter: blur(0.2rem);
-    transition: filter 0.2s ease-out;
+    transition: filter 0.4s ease-out;
     height: 80%;
     position: absolute;
   }
@@ -227,7 +240,7 @@ h3 {
     width: 5ch;
     text-indent: -3rem;
     z-index: 1;
-    transition: filter 0.2s ease-out;
+    transition: filter 0.4s ease-out;
     &--sml {
       left: -10%;
       font-size: 2.5rem;
@@ -246,30 +259,35 @@ h3 {
     overflow: hidden;
   }
   &__content {
-    width: 100%;
-    height: 125vh;
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
-    overflow: hidden;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 5rem;
+    .portfolio__image {
+      width: 100%;
+      height: auto;
+      & + * {
+        margin-top: 2rem;
+      }
+      &--two {
+        height: 30rem;
+        width: auto;
+      }
+    }
   }
   &__title {
     font-size: 4rem;
-    grid-column: 2/8;
+    grid-column: 7/13;
     grid-row: 1/2;
     text-align: center;
-    &--sml {
-      font-size: 1.8rem;
-      padding: 2rem 0;
-    }
-    &--mid {
-      font-size: 3.5rem;
-    }
   }
   &__info {
     grid-column: 6/-1;
-    grid-row: 4/9;
+    grid-row: 2/7;
     padding-top: 1rem;
     span {
       font-style: italic;
@@ -282,30 +300,20 @@ h3 {
     width: 100%;
     height: 100%;
     &--hero {
-      grid-row: 1/3;
-      grid-column: 6/-1;
-      margin-left: 7rem;
+      display: none;
     }
     &--heroTwo {
-      grid-row: 2/8;
+      grid-row: 2/7;
       grid-column: 1/7;
       margin-left: -3rem;
+      height: auto;
     }
-    &--one {
-      grid-row: 1/5;
-      grid-column: 1/-1;
-      margin-left: -6rem;
+    &--one,
+    &--three {
+      margin-left: -15rem;
     }
     &--two {
-      grid-row: 5/11;
-      grid-column: 6/-1;
-      padding-top: 1rem;
-      margin-left: 5rem;
-    }
-    &--three {
-      grid-row: 11/16;
-      grid-column: 1/-1;
-      margin-left: -6rem;
+      margin-left: 15rem;
     }
   }
   &__button {
@@ -313,6 +321,8 @@ h3 {
     font-size: 1.8rem;
     margin-top: 1rem;
     display: block;
+    transition: color 0.2s ease-out;
+
     &:hover,
     &:focus {
       color: var(--clr-primary);
@@ -337,20 +347,12 @@ h3 {
 @media (min-width: 500px) {
   .portfolio {
     &__image {
-      &--hero {
-        grid-column: 6/-1;
-      }
       &--heroTwo {
         grid-column: 1/6;
-      }
-      &--one {
-        grid-column: 1/14;
+        margin-top: -2rem;
       }
       &--two {
-        grid-column: 8/-1;
-      }
-      &--three {
-        grid-column: 1/14;
+        margin-left: 25rem;
       }
     }
     &__info {
@@ -382,6 +384,7 @@ h3 {
     &__section {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      row-gap: 2.5rem;
     }
     &__subtitle {
       width: 6ch;
@@ -396,43 +399,25 @@ h3 {
   }
 
   .portfolio {
-    padding: 1rem 0.5rem;
-    &__title {
-      &--sml {
-        font-size: 2.5rem;
-        padding: 1rem 0;
-      }
-    }
+    // padding: 1rem 0.5rem;
     &__hero {
-      height: 60vh;
+      height: 80vh;
+    }
+    &__title {
+      grid-row: 2/3;
+      grid-column: 5/-1;
     }
     &__image {
-      &--hero {
-        grid-column: 8/-1;
-        grid-row: 1/4;
-        margin: 0;
-      }
       &--heroTwo {
         grid-column: 1/5;
-        grid-row: 2/11;
+        grid-row: 2/12;
         margin: 0;
-      }
-      &--one {
-        grid-column: 1/12;
-        margin: 0;
-      }
-      &--two {
-        grid-column: 9/-1;
-        margin-left: 3rem;
-      }
-      &--three {
-        grid-column: 1/11;
-        margin-left: 1rem;
+        margin-top: 2rem;
       }
     }
     &__info {
-      grid-column: 8/-1;
-      grid-row: 5/10;
+      grid-column: 7/15;
+      grid-row: 4/10;
     }
   }
 }
@@ -441,7 +426,7 @@ h3 {
     font-size: 2rem;
   }
   .hero {
-    padding: 8rem 7rem;
+    padding: 8rem 8rem;
     &__title {
       transform: rotate(0);
       font-size: 6.5rem;
@@ -454,9 +439,16 @@ h3 {
       font-size: 2.2rem;
     }
     &__nav {
-      top: 50%;
+      top: 60%;
     }
   }
+
+  .projects {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   //portfolio pages \\
   .portfolio {
     &__hero {
@@ -469,23 +461,6 @@ h3 {
     }
     &__content {
       width: 60%;
-      margin-left: auto;
-      margin-right: auto;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      .portfolio__image {
-        width: 100%;
-        height: auto;
-        & + * {
-          margin-top: 2rem;
-        }
-        &--two {
-          height: 30rem;
-          width: auto;
-        }
-      }
     }
     &__title {
       grid-column: 1/2;
@@ -505,6 +480,8 @@ h3 {
 
     &__image {
       &--hero {
+        display: block;
+        height: auto;
         grid-row: 2/4;
         padding-bottom: 2rem;
         grid-column: 2/-1;
@@ -513,10 +490,11 @@ h3 {
         display: none;
       }
       &--one,
-      &--two,
       &--three {
-        margin: 0;
-        padding: 0;
+        margin-left: -20rem;
+      }
+      &--two {
+        margin-left: 30rem;
       }
     }
     &__button {
@@ -528,5 +506,40 @@ h3 {
         padding-top: 1rem;
       }
     }
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero {
+    padding: 8rem 10rem;
+  }
+  .portfolio {
+    &__content {
+      width: 60%;
+      .portfolio__image {
+        width: 80%;
+        &--two {
+          width: 38%;
+        }
+        &--two--sml {
+          width: 45%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 2560px) {
+  .hero {
+    padding: 15rem 20rem;
+    &__title {
+      font-size: 10rem;
+    }
+    &__subtitle {
+      font-size: 3rem;
+    }
+  }
+  li {
+    font-size: 2.5rem;
   }
 }

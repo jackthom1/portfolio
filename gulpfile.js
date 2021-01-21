@@ -8,6 +8,7 @@ const babel = require('gulp-babel');
 // const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const source = require('vinyl-source-stream');
+const fileinclude = require('gulp-file-include')
 const browserSync = require('browser-sync').create();
 
 
@@ -23,18 +24,14 @@ function style(){
         .pipe(browserSync.stream());
     }
 
-function images(){
-    return gulp.src('./src/images/**/*')
-    .pipe(imagemin())
-    .pipe(gulp.dest('./dist/images'))
-}
 
-function compile(){
+
+function compileJS(){
     let compileOne = gulp.src("./src/js/**/*.js")
     .pipe(babel({
         presets: ["@babel/preset-env"]
       }))
-    //   .pipe(concat('index.js'))
+      .pipe(concat('index.js'))
       .pipe(gulp.dest('./dist/js'));
     let compileTwo = browserify('./dist/js/index.js')
     .bundle()
@@ -44,43 +41,63 @@ function compile(){
     return compileOne, compileTwo;
 }
 
-
-function watchPHP(){
-    browserSync.init({
-        proxy:{
-            target: "localhost:8888"
-        }
-    });
-    gulp.watch("./src/css/**/*.scss", style);
-    // gulp.watch("./src/images/**/*", images)
-    gulp.watch("./**/*.php").on("change", browserSync.reload);
-    gulp.watch("./src/js/**/*.js", compile).on("change", browserSync.reload);
+function compileHTML(){
+    return gulp.src("./src/html/**.html")
+    .pipe(fileinclude({
+        prefix: '@@',
+        basepath: '@file'
+    }))
+    .pipe(gulp.dest('./dist'))
 }
+
+
 
 function watchHTML(){
     browserSync.init({
         server:{
-            baseDir: "./"
+            baseDir: "./dist"
         }
     });
     gulp.watch("./src/css/**/*.scss", style)
-    // gulp.watch("./src/images/**/*", images)
-    gulp.watch("./**/*.html").on("change", browserSync.reload);
-    gulp.watch("./src/js/**/*.js", compile).on("change", browserSync.reload);
+    gulp.watch("./src/html/**/*.html", compileHTML).on("change", browserSync.reload);
+    gulp.watch("./src/js/**/*.js", compileJS).on("change", browserSync.reload);
 }
 
 
-function gulpExport(){
-    return browserify('./dist/js/index.js')
+function finalCompile(){
+    let compile = browserify('./dist/js/index.js')
     .transform('unassertify', { global: true })
     .transform('uglifyify', { global: true })
     .plugin('common-shakeify')
     .plugin('browser-pack-flat/plugin')
     .bundle()
-    .pipe(require('minify-stream')({ sourceMap: false }))
+    .pipe(require('minify-stream')({ sourceMap: false }));
+
+    let images = gulp.src('./dist/images/**/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./dist/images'))
+
+    return compile, images;
 }
 
-exports.images = images;
-exports.gulpExport = gulpExport;
-exports.watchPHP = watchPHP;
-exports.watchHTML = watchHTML;
+exports.compile = finalCompile;
+exports.watch = watchHTML;
+
+
+
+
+
+// exports.watchPHP = watchPHP;
+
+
+// function watchPHP(){
+    //     browserSync.init({
+    //         proxy:{
+    //             target: "localhost:8888"
+    //         }
+    //     });
+    //     gulp.watch("./src/css/**/*.scss", style);
+    //     gulp.watch("./**/*.php").on("change", browserSync.reload);
+    //     gulp.watch("./src/js/**/*.js", compile).on("change", browserSync.reload);
+    // }
+    
