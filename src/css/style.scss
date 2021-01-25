@@ -99,6 +99,17 @@ h3 {
   display: block;
 }
 
+.a,
+.c {
+  transform: translateX(50%);
+  opacity: 0.5;
+}
+.b,
+.d {
+  transform: translateX(-100%);
+  opacity: 0.5;
+}
+
 // NAV \\
 .nav {
   width: 250px;
@@ -181,14 +192,6 @@ h3 {
   & * + * {
     margin-top: 0.8rem;
   }
-  &__title {
-    transform: rotate(270deg);
-    transform-origin: left top;
-    position: absolute;
-    top: 90%;
-    left: 0%;
-    white-space: nowrap;
-  }
   &__info {
     font-size: 1.2rem;
   }
@@ -212,6 +215,10 @@ h3 {
   overflow-x: hidden;
   a {
     text-decoration: none;
+  }
+  &__title {
+    opacity: 0.5;
+    // filter: blur(0.2rem);
   }
   &__container {
     margin-top: 1rem;
@@ -402,6 +409,9 @@ h3 {
         text-align: center;
       }
     }
+    &__title {
+      display: none;
+    }
   }
 
   .portfolio {
@@ -427,6 +437,7 @@ h3 {
     }
   }
 }
+
 @media (min-width: 1024px) {
   li {
     font-size: 2rem;
@@ -450,9 +461,42 @@ h3 {
   }
 
   .projects {
-    width: 80%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__title {
+      filter: blur(0rem);
+      opacity: 1;
+      display: inline;
+      transform: rotate(90deg);
+      transform-origin: left top;
+      position: absolute;
+      top: 10%;
+      left: 150%;
+      white-space: nowrap;
+    }
+    &__container {
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%;
+      height: 20rem;
+      margin-top: 4rem;
+      &--even {
+        padding-left: 10rem;
+      }
+      &--odd {
+        padding-right: 10rem;
+      }
+    }
+    &__subtitle {
+      font-size: 4.5rem;
+    }
+    &__image {
+      height: 100%;
+    }
   }
 
   //portfolio pages \\
@@ -472,10 +516,8 @@ h3 {
       grid-column: 1/2;
       grid-row: 2/3;
       &--sml {
-        font-size: 3rem;
-      }
-      &--mid {
         font-size: 4rem;
+        padding: 0;
       }
     }
     &__info {
